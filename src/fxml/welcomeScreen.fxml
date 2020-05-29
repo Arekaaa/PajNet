@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.client.WelcomeScreen">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="653.0" stylesheets="@../css/welcomeScreenStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.client.WelcomeScreen">
    <children>
       <Label layoutX="271.0" layoutY="77.0" prefHeight="58.0" prefWidth="111.0" text="Witaj!" textAlignment="CENTER">
          <font>
@@ -34,5 +34,6 @@
          </font>
       </Label>
       <TextField fx:id="nickField" layoutX="303.0" layoutY="188.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label fx:id="errorLabel" layoutX="214.0" layoutY="223.0" textFill="RED" />
    </children>
 </AnchorPane>
