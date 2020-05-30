@@ -2,3 +2,11 @@
     -fx-text-box-border: red ;
     -fx-focus-color: red ;
 }
+
+.check-box.error{
+    -fx-border-color: red;
+}
+
+#anchorPane {
+    -fx-background-image: url('../bacground.jpg');
+}

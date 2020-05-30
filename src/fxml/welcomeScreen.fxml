@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -8,16 +10,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="653.0" stylesheets="@../css/welcomeScreenStyle.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.client.WelcomeScreen">
    <children>
-      <Label layoutX="271.0" layoutY="77.0" prefHeight="58.0" prefWidth="111.0" text="Witaj!" textAlignment="CENTER">
+      <Label layoutX="272.0" layoutY="77.0" prefHeight="58.0" prefWidth="111.0" text="Witaj!" textAlignment="CENTER">
          <font>
             <Font size="40.0" />
          </font>
       </Label>
       <Button fx:id="exitButton" layoutX="277.0" layoutY="357.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="25.0" prefWidth="99.0" text="Wyjdź" />
-      <Button fx:id="connectButton" layoutX="216.0" layoutY="253.0" mnemonicParsing="false" onAction="#onConnectClick" prefHeight="46.0" prefWidth="222.0" text="Połącz się z serwerem">
+      <Button fx:id="connectButton" layoutX="216.0" layoutY="287.0" mnemonicParsing="false" onAction="#onConnectClick" prefHeight="46.0" prefWidth="222.0" text="Połącz się z serwerem">
          <font>
             <Font size="20.0" />
          </font>
@@ -28,12 +29,14 @@
          </image>
       </ImageView>
       <Label layoutX="542.0" layoutY="369.0" text="Version: 0.1 beta" />
-      <Label layoutX="179.0" layoutY="190.0" text="Podaj swój nick:">
+      <Label layoutX="174.0" layoutY="168.0" text="Podaj swój nick:">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="nickField" layoutX="303.0" layoutY="188.0" prefHeight="25.0" prefWidth="158.0" />
-      <Label fx:id="errorLabel" layoutX="214.0" layoutY="223.0" textFill="RED" />
+      <TextField fx:id="nickField" layoutX="304.0" layoutY="166.0" prefHeight="25.0" prefWidth="158.0" />
+      <Label fx:id="errorLabel" layoutX="229.0" layoutY="255.0" prefHeight="17.0" prefWidth="195.0" textFill="RED" />
+      <CheckBox fx:id="reqBox" layoutX="262.0" layoutY="215.0" mnemonicParsing="false" text="Akceptujesz" />
+      <Hyperlink layoutX="350.0" layoutY="212.0" onAction="#onHyperLinkClick" text="regulamin?" />
    </children>
 </AnchorPane>
