@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.Calendar;
 
 public class ClientController  {
     private static final int PORT = 4500;
@@ -94,7 +96,7 @@ public class ClientController  {
                 System.out.println("Podłączono do " + socket);
                 messagesArea.appendText("Połączono z " + socket + "." + newLine);
                 printWriter = new PrintWriter(socket.getOutputStream());
-                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
 
                 connectButton.setDisable(true);
                 disconnectButton.setDisable(false);
@@ -114,12 +116,16 @@ public class ClientController  {
                 @Override
                 public void run() {
                     String tekst;
-
                     try {
                         while ((tekst = bufferedReader.readLine()) != null) {
-                            System.out.println(tekst);
-                            messagesArea.appendText(tekst + newLine);
-                        }
+                                String[] subStringDate = tekst.split("~");
+                                String[] subString = subStringDate[1].split("`");  // Nie chcemy pobierać swojej wiadomości z serwera aby nie widzieć ich podwójnie
+                                if (subString[0].equals(nickname)) { // Jeżeli to co przyjdzie nie jest naszym imieniem
+                                    messagesArea.appendText(subStringDate[0]+"> Ty: " + subString[1] + newLine);
+                                } else {
+                                    messagesArea.appendText(tekst + newLine);
+                                }
+                            }
                     } catch (Exception e) {
                         System.out.println("Utracono połączenie z serwerem");
                     }
@@ -155,7 +161,7 @@ public class ClientController  {
         messageField.clear();
 
         try {
-                printWriter.println(nickname + ": " + wiadomosc);
+                printWriter.println(data()+ "-~"+nickname + "` " + wiadomosc);
                 printWriter.flush();
         }
         catch(Exception e){
@@ -169,14 +175,33 @@ public class ClientController  {
         messageField.clear();
 
         try {
-            printWriter.println(nickname + ": " + wiadomosc);
+            printWriter.println(data()+ " -~"+nickname + "` " + wiadomosc);
             printWriter.flush();
         }
         catch(Exception e){
             e.printStackTrace();
         }
     }
+
+    public String data() {
+        Calendar now = Calendar.getInstance();
+        String minuta;
+        String godzina;
+        if (now.get(Calendar.MINUTE) <= 9) {
+            minuta = "0" + now.get(Calendar.MINUTE);
+        } else {
+            minuta = Integer.toString(now.get(Calendar.MINUTE));
+        }
+        if (now.get(Calendar.HOUR_OF_DAY) <= 9) {
+            godzina = "0" + now.get(Calendar.HOUR_OF_DAY);
+        } else {
+            godzina = Integer.toString(now.get(Calendar.HOUR_OF_DAY));
+        }
+        String czas = godzina + ":" + minuta;
+        return czas;
     }
+
+}
 
 
 

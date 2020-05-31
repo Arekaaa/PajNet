@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -55,7 +56,7 @@ public class ServerController {
             try {
                 System.out.println("Połączony.");
                 socket = socketKlient;
-                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // odczyt tego co wchodzi na strumień na wejściu
+                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); // odczyt tego co wchodzi na strumień na wejściu
                 //jeżeli przyjdzie komunikat od klienta to trafi na wejście(InputStreamReader) a następnie BufferedReader odczyta to co wejdzie do strumienia wejściowego
             } catch (Exception ex) {
                 ex.printStackTrace();
