@@ -5,7 +5,7 @@ Architektura: Klient(graficzny) - Serwer(konsolowy).
 Projekt w fazie początkowej/rozwojowej.
 
 
-###TODO:
+### TODO:
 - Automatyczne ustawianie nowej lini dla długich wiadomości,
 - Blokowanie wysyłania pustych wiadomości,
 - ...
