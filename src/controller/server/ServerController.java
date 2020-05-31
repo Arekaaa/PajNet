@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ServerController {
-    private ArrayList klientArrayList; // lista klientów
+    private ArrayList<PrintWriter> klientArrayList; // lista klientów
     private PrintWriter printWriter; // zapis tekstu
 
     //uruchomienie programu
@@ -20,7 +20,7 @@ public class ServerController {
 
     //uruchomienie serwera
     private void startSerwer() { // nasłuchiwanie i odbieranie komunikatu od klientów
-        klientArrayList = new ArrayList();
+        klientArrayList = new ArrayList<PrintWriter>();
 
         try {
             System.out.println("Serwer pracuje...");
@@ -73,9 +73,9 @@ public class ServerController {
                     System.out.println("Odebrano >> " + str);
 
                     //dopóki znajduje się następny klient na liście to rozsyłamy mu tekst wiadomości
-                    Iterator it = klientArrayList.iterator(); //iterowanie po liście klientów
+                    Iterator<PrintWriter> it = klientArrayList.iterator(); //iterowanie po liście klientów
                     while (it.hasNext()) { //rozsyłanie do wszystkich klientów tekst z str'a jeśli iterator znajdzie na liście kolejnego klienta
-                        pw = (PrintWriter) it.next(); // rzutowanie w sposób jawny ( castowanie na printWritera )
+                        pw = it.next(); // rzutowanie w sposób jawny ( castowanie na printWritera )
                         pw.println(str); // Wkładanie do printWritera tekstu z str
                         pw.flush(); //opróżnianie strumienia
                     }
@@ -87,11 +87,11 @@ public class ServerController {
         }
     }
 
-    public ArrayList getKlientArrayList() {
+    public ArrayList<PrintWriter> getKlientArrayList() {
         return klientArrayList;
     }
 
-    public void setKlientArrayList(ArrayList klientArrayList) {
+    public void setKlientArrayList(ArrayList<PrintWriter> klientArrayList) {
         this.klientArrayList = klientArrayList;
     }
 

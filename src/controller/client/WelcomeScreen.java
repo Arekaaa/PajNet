@@ -16,7 +16,6 @@ import java.io.IOException;
 public class WelcomeScreen {
 boolean validateNickBool;
 boolean validateReqBool;
-
     @FXML
     private Button exitButton;
 
@@ -77,12 +76,13 @@ boolean validateReqBool;
     void onConnectClick(ActionEvent event) {
         validateNick();
         validateReg();
-        if(validateNickBool && validateReqBool) {
+        if (validateNickBool && validateReqBool) {
             try {
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/FXML/ClientController.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/ClientController.fxml"));
                 Parent root = fxmlLoader.load();
                 ClientController client = fxmlLoader.getController();
                 client.loadNick(nickField.getText());
+                //client.connect();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setResizable(false);
@@ -93,7 +93,20 @@ boolean validateReqBool;
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+           /* Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    ClientController.main(nickField.getText());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+        t.setDaemon(true);
+        t.start();*/
+    }
     }
 
     @FXML

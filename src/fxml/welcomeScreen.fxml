@@ -18,7 +18,7 @@
          </font>
       </Label>
       <Button fx:id="exitButton" layoutX="277.0" layoutY="357.0" mnemonicParsing="false" onAction="#onExitClick" prefHeight="25.0" prefWidth="99.0" text="Wyjdź" />
-      <Button fx:id="connectButton" layoutX="216.0" layoutY="287.0" mnemonicParsing="false" onAction="#onConnectClick" prefHeight="46.0" prefWidth="222.0" text="Połącz się z serwerem">
+      <Button fx:id="connectButton" layoutX="216.0" layoutY="287.0" mnemonicParsing="false" onAction="#onConnectClick" prefHeight="46.0" prefWidth="222.0" text="Przejdź do czatu">
          <font>
             <Font size="20.0" />
          </font>
@@ -28,7 +28,7 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="542.0" layoutY="369.0" text="Version: 0.1 beta" />
+      <Label layoutX="542.0" layoutY="369.0" text="Version: 0.2 beta" />
       <Label layoutX="174.0" layoutY="168.0" text="Podaj swój nick:">
          <font>
             <Font size="14.0" />

@@ -20,7 +20,7 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="542.0" layoutY="369.0" text="Version: 0.1 beta" />
+      <Label layoutX="542.0" layoutY="369.0" text="Version: 0.2 beta" />
       <Label layoutX="38.0" layoutY="158.0" text="1. Użytkownik czatu ma obowiązek przedstawić się swoim imieniem lub nickiem. " />
       <Label layoutX="38.0" layoutY="175.0" text="2. Na czacie nie można obrażać innych użytkowników." />
       <Label layoutX="38.0" layoutY="192.0" text="3. Należy zachowywać się kulturalnie, nie namawiać do przemocy oraz nie używać niecenzuralnego słownictwa." />
