@@ -35,6 +35,9 @@ public class ClientController  {
     private Button connectButton;
 
     @FXML
+    private Button logOutButton;
+
+    @FXML
     private Button disconnectButton;
 
     @FXML
@@ -100,6 +103,7 @@ public class ClientController  {
 
                 connectButton.setDisable(true);
                 disconnectButton.setDisable(false);
+                logOutButton.setDisable(true);
                 sendButton.setDisable(false);
                 ipField.setDisable(true);
                 messageField.setDisable(false);
@@ -107,6 +111,7 @@ public class ClientController  {
             } catch (IOException e) {
                 connectButton.setDisable(false);
                 disconnectButton.setDisable(true);
+                logOutButton.setDisable(false);
                 sendButton.setDisable(true);
                 ipField.setDisable(false);
                 messageField.setDisable(true);
@@ -131,6 +136,7 @@ public class ClientController  {
                     }
                 }
             });
+            t.setDaemon(true);
             t.start();
         }
     }
@@ -150,6 +156,7 @@ public class ClientController  {
         }
         connectButton.setDisable(false);
         disconnectButton.setDisable(true);
+        logOutButton.setDisable(false);
         sendButton.setDisable(true);
         ipField.setDisable(false);
         messageField.setDisable(true);

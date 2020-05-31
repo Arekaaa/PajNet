@@ -83,6 +83,11 @@ boolean validateReqBool;
                 ClientController client = fxmlLoader.getController();
                 client.loadNick(nickField.getText());
                 Stage stage = new Stage();
+                /*stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+                    public void handle(WindowEvent we) {
+                        //System.exit(0);
+                    }
+                });*/
                 stage.setScene(new Scene(root));
                 stage.setResizable(false);
                 stage.setTitle("PajNet");
