@@ -8,16 +8,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 
 public class ClientController  {
-    private static final int PORT = 4500;
+    private static final int PORT = 4541;
 
     private Socket socket;
     private BufferedReader bufferedReader;
@@ -98,9 +95,22 @@ public class ClientController  {
                 socket = new Socket(IP, PORT);
                 System.out.println("Podłączono do " + socket);
                 messagesArea.appendText("Połączono z " + socket + "." + newLine);
-                printWriter = new PrintWriter(socket.getOutputStream());
-                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8));
+                printWriter = new PrintWriter(new OutputStreamWriter(socket.getOutputStream(),StandardCharsets.UTF_8),true);
+                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8));
 
+                try {
+                    printWriter.print(data() + "~" + nickname + "- " + "przychodzi. Przywitaj się :) " + newLine);
+                    printWriter.flush();
+                    String welcome = bufferedReader.readLine();
+                    String[] subWelcomeDate = welcome.split("~");
+                    String[] subWelcomeNickname = subWelcomeDate[1].split("-");
+                    if (!subWelcomeNickname[0].equals(nickname)) {
+                        messagesArea.appendText(welcome + newLine);
+                    }
+                }
+                catch (IOException e){
+                    e.printStackTrace();
+                }
                 connectButton.setDisable(true);
                 disconnectButton.setDisable(false);
                 logOutButton.setDisable(true);
@@ -117,6 +127,7 @@ public class ClientController  {
                 messageField.setDisable(true);
                 messagesArea.appendText("Błąd połączenia! Sprawdź adres IP." + newLine);
             }
+
             Thread t = new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -124,9 +135,9 @@ public class ClientController  {
                     try {
                         while ((tekst = bufferedReader.readLine()) != null) {
                                 String[] subStringDate = tekst.split("~");
-                                String[] subString = subStringDate[1].split("`");  // Nie chcemy pobierać swojej wiadomości z serwera aby nie widzieć ich podwójnie
+                                String[] subString = subStringDate[1].split("-");  // Nie chcemy pobierać swojej wiadomości z serwera aby nie widzieć ich podwójnie
                                 if (subString[0].equals(nickname)) { // Jeżeli to co przyjdzie nie jest naszym imieniem
-                                    messagesArea.appendText(subStringDate[0]+"> Ty: " + subString[1] + newLine);
+                                    messagesArea.appendText(subStringDate[0]+"~ Ty- " + subString[1] + newLine);
                                 } else {
                                     messagesArea.appendText(tekst + newLine);
                                 }
@@ -145,7 +156,7 @@ public class ClientController  {
     void onDisconnectClick(ActionEvent event){
         try{
             messagesArea.appendText("Rozłączono z serwerem." +newLine);
-            printWriter.println(nickname + " rozłączył się");
+            printWriter.println(data() + "~" + nickname +" rozłączył się.");
             printWriter.flush();
             printWriter.close();
             bufferedReader.close();
@@ -167,12 +178,13 @@ public class ClientController  {
         wiadomosc = messageField.getText();
         messageField.clear();
 
-        try {
-                printWriter.println(data()+ "-~"+nickname + "` " + wiadomosc);
+        if(!wiadomosc.isEmpty()) {
+            try {
+                printWriter.println(data() + "~" + nickname + "- " + wiadomosc);
                 printWriter.flush();
-        }
-        catch(Exception e){
-            e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -181,12 +193,13 @@ public class ClientController  {
         wiadomosc = messageField.getText();
         messageField.clear();
 
-        try {
-            printWriter.println(data()+ " -~"+nickname + "` " + wiadomosc);
-            printWriter.flush();
-        }
-        catch(Exception e){
-            e.printStackTrace();
+        if(!wiadomosc.isEmpty()) {
+            try {
+                printWriter.println(data() + "~" + nickname + "- " + wiadomosc);
+                printWriter.flush();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 

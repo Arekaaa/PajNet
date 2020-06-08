@@ -25,7 +25,7 @@ public class ServerController {
 
         try {
             System.out.println("Serwer pracuje...");
-            ServerSocket serverSocket = new ServerSocket(4500); //uruchomienie usługi nasłuchiwania na porcie 4500
+            ServerSocket serverSocket = new ServerSocket(4541); //uruchomienie usługi nasłuchiwania na porcie 4500
 
             while (true) {  //pętla nieskończona - serwer działa cały czas
                 Socket socket = serverSocket.accept(); //akceptowanie wszystkich połączeń przychodzacych na port
@@ -56,7 +56,7 @@ public class ServerController {
             try {
                 System.out.println("Połączony.");
                 socket = socketKlient;
-                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(), StandardCharsets.UTF_8)); // odczyt tego co wchodzi na strumień na wejściu
+                bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream())); // odczyt tego co wchodzi na strumień na wejściu
                 //jeżeli przyjdzie komunikat od klienta to trafi na wejście(InputStreamReader) a następnie BufferedReader odczyta to co wejdzie do strumienia wejściowego
             } catch (Exception ex) {
                 ex.printStackTrace();
