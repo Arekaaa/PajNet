@@ -99,7 +99,7 @@ public class ClientController  {
                 bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream(),StandardCharsets.UTF_8));
 
                 try {
-                    printWriter.print(data() + "~" + nickname + "- " + "przychodzi. Przywitaj się :) " + newLine);
+                    printWriter.print(data() + "~" + nickname + "- " + "dołącza. Przywitaj się :) " + newLine);
                     printWriter.flush();
                     String welcome = bufferedReader.readLine();
                     String[] subWelcomeDate = welcome.split("~");
@@ -128,27 +128,34 @@ public class ClientController  {
                 messagesArea.appendText("Błąd połączenia! Sprawdź adres IP." + newLine);
             }
 
-            Thread t = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    String tekst;
-                    try {
-                        while ((tekst = bufferedReader.readLine()) != null) {
+                Thread t = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        String tekst;
+                        try {
+                            while ((tekst = bufferedReader.readLine()) != null) {
                                 String[] subStringDate = tekst.split("~");
                                 String[] subString = subStringDate[1].split("-");  // Nie chcemy pobierać swojej wiadomości z serwera aby nie widzieć ich podwójnie
                                 if (subString[0].equals(nickname)) { // Jeżeli to co przyjdzie nie jest naszym imieniem
-                                    messagesArea.appendText(subStringDate[0]+"~ Ty- " + subString[1] + newLine);
+                                    messagesArea.appendText(subStringDate[0] + "~ Ty- " + subString[1] + newLine);
                                 } else {
                                     messagesArea.appendText(tekst + newLine);
                                 }
                             }
-                    } catch (Exception e) {
-                        System.out.println("Utracono połączenie z serwerem");
+                        } catch (Exception e) {
+                            System.out.println("Utracono połączenie z serwerem");
+                            messagesArea.appendText("Rozłączenie!" + newLine + "Sprawdź swoje łącze internetowe lub stan serwera."+newLine);
+                            connectButton.setDisable(false);
+                            disconnectButton.setDisable(true);
+                            logOutButton.setDisable(false);
+                            sendButton.setDisable(true);
+                            ipField.setDisable(false);
+                            messageField.setDisable(true);
+                        }
                     }
-                }
-            });
-            t.setDaemon(true);
-            t.start();
+                });
+                t.setDaemon(true);
+                t.start();
         }
     }
 
