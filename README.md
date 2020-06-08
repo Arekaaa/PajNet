@@ -12,7 +12,7 @@ Projekt w fazie początkowej/rozwojowej.
 - <s> Wstępna obsługa klient-serwer</s>
 #### v0.3-beta
 - <s>Obsługa polskich znaków,</s>
-- Automatyczne ustawianie nowej lini dla długich wiadomości,
+- <s>Automatyczne ustawianie nowej lini w oknie wszystkich wiadomości dla długich wiadomości,</s>
 - <s>Blokowanie wysyłania pustych wiadomości,</s>
 - <s>Gdy ktoś dołącza do czatu, pojawia się informacja "Nickname dołącza",</s>
 - <s>Gdy użytkownik traci połączenie z serwerem pojawia się mu komunikat.</s>
