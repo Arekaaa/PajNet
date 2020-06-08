@@ -6,7 +6,7 @@ Projekt w fazie początkowej/rozwojowej.
 
 
 ### TODO:
-- Obsługa polskich znaków,
+<s>- Obsługa polskich znaków,</s>
 - Automatyczne ustawianie nowej lini dla długich wiadomości,
 - Blokowanie wysyłania pustych wiadomości,
 - Gdy ktoś dołącza do czatu, pojawia się informacja "Nickname dołącza",
