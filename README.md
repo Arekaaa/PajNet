@@ -6,6 +6,10 @@ Projekt w fazie początkowej/rozwojowej.
 
 
 ### TODO:
+#### v0.1-beta
+- <s> Wstępny interfejs użytkownika</s>
+#### v0.2-beta
+- <s> Wstępna obsługa klient-serwer</s>
 #### v0.3-beta
 - <s>Obsługa polskich znaków,</s>
 - Automatyczne ustawianie nowej lini dla długich wiadomości,
