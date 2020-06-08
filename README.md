@@ -10,4 +10,5 @@ Projekt w fazie początkowej/rozwojowej.
 - Automatyczne ustawianie nowej lini dla długich wiadomości,
 - Blokowanie wysyłania pustych wiadomości,
 - Gdy ktoś dołącza do czatu, pojawia się informacja "Nickname dołącza",
+- Gdy użytkownik traci połączenie z serwerem pojawia się mu komunikat,
 - ...
