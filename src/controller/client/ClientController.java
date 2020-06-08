@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.InputMethodEvent;
 import javafx.stage.Stage;
 
 import java.io.*;
@@ -162,7 +163,6 @@ public class ClientController  {
     @FXML
     void onDisconnectClick(ActionEvent event){
         try{
-            messagesArea.appendText("Rozłączono z serwerem." +newLine);
             printWriter.println(data() + "~" + nickname +" rozłączył się.");
             printWriter.flush();
             printWriter.close();

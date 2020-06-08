@@ -22,7 +22,7 @@
             <Image url="@../logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="548.0" layoutY="370.0" text="Version: 0.2 beta" />
+      <Label layoutX="548.0" layoutY="370.0" text="Version: 0.3 beta" />
       <Label layoutX="460.0" layoutY="17.0" prefHeight="20.0" prefWidth="68.0" text="Twój nick:">
          <font>
             <Font size="14.0" />
@@ -34,7 +34,7 @@
             <Font name="System Bold" size="14.0" />
          </font></Label>
       <Label layoutX="15.0" layoutY="318.0" text="Wyślij wiadomość:" />
-      <TextArea fx:id="messagesArea" editable="false" layoutX="129.0" layoutY="73.0" prefHeight="228.0" prefWidth="420.0" />
+      <TextArea fx:id="messagesArea" editable="false" layoutX="129.0" layoutY="73.0" prefHeight="228.0" prefWidth="420.0" wrapText="true" />
       <Button fx:id="connectButton" layoutX="5.0" layoutY="173.0" mnemonicParsing="false" onAction="#onConnectClick" prefHeight="54.0" prefWidth="117.0" text="Połącz" textFill="#0cae22">
          <font>
             <Font size="24.0" />
