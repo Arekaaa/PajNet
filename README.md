@@ -8,7 +8,7 @@ Projekt w fazie początkowej/rozwojowej.
 ### TODO:
 - <s>Obsługa polskich znaków,</s>
 - Automatyczne ustawianie nowej lini dla długich wiadomości,
-- Blokowanie wysyłania pustych wiadomości,
+- <s>Blokowanie wysyłania pustych wiadomości,</s>
 - Gdy ktoś dołącza do czatu, pojawia się informacja "Nickname dołącza",
 - Gdy użytkownik traci połączenie z serwerem pojawia się mu komunikat,
 - ...
